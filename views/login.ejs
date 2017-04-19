@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="
+	background-repeat : no-repeat;
+	background-size : cover;
+	background-position : center center;
+	">
+
+<style>
+<body>
+*:focus{
+    outline:none;
+}
+
+.container {
+    position: center center;
+}
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 40px;
+    box-shadow:0 1px 0 #cfcfcf;
+    position:center;
+}
+
+h3 {
+ border:0 solid #fff;
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.wrapper {
+    text-align: center;
+}
+h4 {
+ border:0 solid #fff;
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.registbtn{
+display:block;
+margin-right:auto;
+margin-left:auto;
+}
+</style>
+<br>
+<br>
+<br>
+    <div class="container">
+
+
+    <form method="POST" action="./login">
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-5">
+            <div class="form-login">
+            <h3><font>Login</font></h3>
+            <br>
+            <label for="id">ID</label>
+            <input type="text" name="id" class="form-control input-sm chat-input" placeholder="id" maxlength="25"/>
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control input-sm chat-input" placeholder="password" maxlength="25"/>
+            <br>
+            <br>
+            <div class="wrapper">
+            <span class="group-btn">
+                <INPUT type="submit" value="Login" class="btn btn-primary btn-md">
+            </span>
+            </div>
+            <br>
+            <font color="red" face="游ゴシック">
+            </font>
+            </div>
+        </div>
+
+    </div>
+</div>
+</form>
+    </div>
+
+
+  </body>
+</html>
