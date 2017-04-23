@@ -12,34 +12,35 @@
 
 var socket = io.connect("http://localhost:3000");
 
-/*socket.on('send message',function(chat){
-    var element = document.getElementById("messages");
-
-    for (var key in chat) {
-      console.log(chat[key]);
-      var add_element = document.createElement('li');
-      add_element.textContent = chat[key];
-      element.appendChild(add_element);
-    }
-});
-*/
 socket.on('send message',function(chat){
+
     var element = document.getElementById("messages");
-    var first_element = document.createElement('div');
-    first_element.classNmae = 'panel-heading';
-    first_element.textContent = chat.user;
-    element.appendChild(first_element);
+    var panel = document.createElement('div');
+    panel.className = 'panel panel-primary';
 
-    var second_element = document.createElement('div');
-    second_element.classNmae = 'panel-body';
-    second_element.textContent = chat.message;
-    element.appendChild(second_element);
+    var panel_header = document.createElement('div');
+    panel_header.className = 'panel-heading'
 
-    var third_element = document.createElement('div');
-    third_element.classNmae = 'panel-footer';
-    second_element.textContent = chat.time;
-    element.appendChild(third_element);
+    var panel_title = document.createElement('h2');
+    panel_title.className = 'panel-title'
+    panel_title.textContent = chat.user;
 
+    var panel_body = document.createElement('div');
+    panel_body.className = 'panel-body';
+
+    var p =document.createElement('p');
+    p.textContent = chat.message;
+
+    var panel_footer = document.createElement('div');
+    panel_footer.className = 'panel-footer text-right';
+    panel_footer.textContent = chat.time;
+
+    panel_header.appendChild(panel_title);
+    panel_body.appendChild(p);
+    panel.appendChild(panel_header);
+    panel.appendChild(panel_body);
+    panel.appendChild(panel_footer);
+    element.appendChild(panel);
 });
 
 
@@ -52,10 +53,37 @@ function SendMessage(){
 </script>
 </head>
 <body>
-<div class="containar">
-<input id="m" autocomplete="off" /><button onclick="SendMessage()">Send</button>
-<!--ul id="messages"></ul-->
-<div class="panel panel-primary" id="messages"><div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid ">
+   <div class="navbar-header">
+   <a href="" class="navbar-brand" >Bug袋</a>
+   </div>
+   <ul class="nav navbar-nav">
+  <li> <a href=""> New Message</a> </li>
+  <li> <a href=""> Talk</a></li>
+  <li> <a href=""> Participants</a></li>
+  <li> <a href=""> Favorite</a></li>
+  <li> <a href=""> Apply</a></li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+  	<p>404エラーがでてしまい、解決できません。だれか解決方法が分かる方いませんか?</p>
+  </div>
+<h1 class="page-header>chat message</h1>
+<div id="messages"><div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1">
+      <div class="input-group">
+        <input id="m" type="text" class="form-control" placeholder="chat message">
+        <span class="input-group-btn">
+          <button class="btn btn-default" onclick="SendMessage()">Send</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
 </div>
 </body>
 </html>
