@@ -15,7 +15,7 @@ var db = require('./model/database');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
-
+var chat = require('./routes/chat');
 
 
 // view engine setup
@@ -35,7 +35,7 @@ app.use(passport.initialize());
 app.use('/addUser', users);
 app.use('/', index);
 app.use('/login',login);
-
+app.use('/chat',chat);
 
 
 // catch 404 and forward to error handler
