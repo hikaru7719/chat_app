@@ -38,18 +38,17 @@ router.post('/',function(req,res,next){
   var id = req.body.id;
   var pass = req.body.password;
   Users.findOne({ "id": id},function(err, user){
-    console.log(user.id);
-    console.log(user.password);
-    console.log(id);
-    console.log(pass);
     if(err){
       console.log(err);
     }
     else{
-      if(user.password === pass)
-      res.render('index');
-      else
+      if(user.password === pass){
+      req.session.username = id;
+      res.render('index', {name: req.session.username});
+    }
+      else{
       res.render('login');
+    }
     }
   });
 });

@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-
+var session = require('express-session');
 
 //modelの定義
 var db = require('./model/database');
@@ -30,6 +30,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
+app.use(session({
+  secret: 'mallow',
+  resave: false,
+  saveUninitialized: false,
+  cookie:{
+  httpOnly: false,
+  secure: false,
+  maxage: 1000 * 60 * 30
+  }
+}));
 
 
 app.use('/addUser', users);
