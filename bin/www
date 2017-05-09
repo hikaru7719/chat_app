@@ -57,8 +57,6 @@ io.sockets.on('connection',function(socket){
       });
       console.log(chat.time);
       io.sockets.emit('send message', chat);
-      //io.sockets.emit('send2 message',chat);
-      //io.sockets.emit('send2 message',{message: chat.message, time: chat.time, user: chat.user);
     });
 });
 
