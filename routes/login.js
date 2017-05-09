@@ -44,7 +44,8 @@ router.post('/',function(req,res,next){
     else{
       if(user.password === pass){
       req.session.username = id;
-      res.render('index', {name: req.session.username});
+      //res.render('chat', {name: req.session.username};
+      res.redirect("../chat");
     }
       else{
       res.render('login');

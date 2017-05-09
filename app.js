@@ -16,8 +16,18 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var chat = require('./routes/chat');
+var sessionMiddleware = session({
+  secret: 'mallow',
+  resave: false,
+  saveUninitialized: false,
+  cookie:{
+  httpOnly: false,
+  secure: false,
+  maxage: 1000 * 60 * 30
+}});
 
 
+app.session = sessionMiddleware;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -30,16 +40,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
-app.use(session({
-  secret: 'mallow',
-  resave: false,
-  saveUninitialized: false,
-  cookie:{
-  httpOnly: false,
-  secure: false,
-  maxage: 1000 * 60 * 30
-  }
-}));
+app.use(sessionMiddleware);
 
 
 app.use('/addUser', users);

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var mURI='mongodb://localhost/chat';
+var mURI='mongodb://127.0.0.1/chat';
 mongoose.connect(mURI,function(err){
   if(err){
     console.log(err);

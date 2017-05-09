@@ -3,8 +3,8 @@
 /**
  * Module dependencies.
  */
-
 var app = require('../app');
+var sessionMiddleware = app.session;
 var debug = require('debug')('chat-app:server');
 var http = require('http');
 var mongoose = require('mongoose');
@@ -35,6 +35,10 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 
+io.use(function(socket, next){
+  sessionMiddleware(socket.request, socket.request.res, next);
+});
+
 // socket.io connection
 io.sockets.on('connection',function(socket){
     console.log('connected');
@@ -42,6 +46,7 @@ io.sockets.on('connection',function(socket){
       var chat = new Chat();
       chat.message = message;
       chat.chat_id = "one";
+      chat.user = socket.request.session.username ;
       chat.save(function(error,chat){
         console.log(message);
         if(error){
