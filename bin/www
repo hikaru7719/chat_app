@@ -44,8 +44,8 @@ io.sockets.on('connection',function(socket){
     console.log('connected');
     socket.on('chat message',function(message){
       var chat = new Chat();
-      chat.message = message;
-      chat.chat_id = "one";
+      chat.message = message.message;
+      chat.chat_id = message.question_id;
       chat.user = socket.request.session.username ;
       chat.save(function(error,chat){
         console.log(message);

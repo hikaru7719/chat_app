@@ -26,3 +26,11 @@ var ChatScema = new mongoose.Schema({
   versionKey: false
 });
 mongoose.model('Chat',ChatScema);
+
+
+var QuestionScema = new mongoose.Schema({
+  question: String
+},{
+  versionKey: false
+});
+mongoose.model('Question',QuestionScema);

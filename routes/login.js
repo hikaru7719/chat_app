@@ -45,7 +45,7 @@ router.post('/',function(req,res,next){
       if(user.password === pass){
       req.session.username = id;
       //res.render('chat', {name: req.session.username};
-      res.redirect("../chat");
+      res.redirect("../create");
     }
       else{
       res.render('login');

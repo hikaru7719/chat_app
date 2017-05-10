@@ -48,7 +48,9 @@ function SendMessage(){
   var message;
   message = document.getElementById("m").value;
   document.getElementById("m").value = "";
-  socket.emit('chat message',message);
+  question_id = document.getElementById("question_id").value;
+  document.getElementById("m").value = "";
+  socket.emit('chat message',{message: message,question_id: question_id});
 }
 </script>
 </head>
@@ -68,15 +70,15 @@ function SendMessage(){
 </nav>
 <div class="container">
   <div class="jumbotron">
-  	<p>404エラーがでてしまい、解決できません。だれか解決方法が分かる方いませんか?</p>
+  	<p><%= question %></p>
   </div>
-<div id="messages"><% data.forEach(function (value, key) { %>
-  <div class="panel panel-primary">
-    <div class="panel-heading"><div class="panel-title"><%=value.user%></div></div>
-    <div class="panel-body"><p><%=value.message%></p></div>
-    <div class="panel-footer text-right"><%=value.time%></div>
-  </div>
-<% }); %></div>
+  <div id="messages"><% if(data!=null){data.forEach(function (value, key) { %>
+    <div class="panel panel-primary">
+      <div class="panel-heading"><div class="panel-title"><%=value.user%></div></div>
+      <div class="panel-body"><p><%=value.message%></p></div>
+      <div class="panel-footer text-right"><%=value.time%></div>
+    </div>
+  <% }); }%></div>
 <br>
 <br>
 <br>
@@ -85,6 +87,7 @@ function SendMessage(){
     <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1">
       <div class="input-group">
         <input id="m" type="text" class="form-control" placeholder="chat message">
+        <input id="question_id" type="hidden" value="<%= question_id%>">
         <span class="input-group-btn">
           <button class="btn btn-default" onclick="SendMessage()">Send</button>
         </span>

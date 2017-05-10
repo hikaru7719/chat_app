@@ -16,6 +16,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var chat = require('./routes/chat');
+var create = require('./routes/create');
+
 var sessionMiddleware = session({
   secret: 'mallow',
   resave: false,
@@ -47,6 +49,7 @@ app.use('/addUser', users);
 app.use('/', index);
 app.use('/login',login);
 app.use('/chat',chat);
+app.use('/create',create);
 
 
 // catch 404 and forward to error handler
