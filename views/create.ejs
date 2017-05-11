@@ -10,24 +10,12 @@
 </script>
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid ">
-   <div class="navbar-header">
-   <a href="" class="navbar-brand" >Bug袋</a>
-   </div>
-   <ul class="nav navbar-nav">
-  <li> <a href=""> New Message</a> </li>
-  <li> <a href=""> Talk</a></li>
-  <li> <a href=""> Participants</a></li>
-  <li> <a href=""> Favorite</a></li>
-  <li> <a href=""> Apply</a></li>
-  </ul>
-</nav>
+<% include header %>
 <div class="container">
   <form action="./create" method="post">
     <div class="ui-widget">
       <div class="form-group">
-        <label>質問投稿</label>
+        <label><h2>質問投稿</h2></label>
         <textarea name="question" cols="50" rows="7" class="form-control" placeholder="Your question!!!" required autofocus></textarea>
       </div>
     </div>
@@ -35,6 +23,31 @@
       <button type="submit" class="btn btn-info">help me!</button>
     </div>
   </form>
+  <br>
+  <div class="panel panel-warning">
+    <div class="panel-heading">質問一覧</div>
+      <div class="panel-body">
+        <p>質問を選んでチャットルームに移動します。</div>
+          <div class="table-responsive">
+            <table class="table table-stripe">
+              <thead>
+                <tr>
+                  <th>質問</th>
+                  <th>チャットへ移動</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.forEach(function(question){ %>
+                <tr>
+                  <td><%=question.question%></td>
+                  <td><a class="btn btn-danger" href="../create/<%=question._id%>/<%=question.question%>">chat</a></td>
+                </tr>
+                <%})%>
+              </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
 </div>
 </body>
 </html>

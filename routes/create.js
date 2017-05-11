@@ -2,11 +2,22 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Question = mongoose.model('Question');
+var Chat = mongoose.model('Chat');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('create');
+  Question.find({},function(err,data){
+      res.render('create',{data:data});
+  });
+});
+
+router.get('/:id/:question',function(req,res,next){
+  Chat.find({"chat_id":req.params.id},function(err,data){
+        console.log(req.params.id);
+        console.log(req.params.question);
+        res.render('chat',{question_id: req.params.id, question: req.params.question, data:data});
+  });
 });
 
 router.post('/', function(req, res, next) {
