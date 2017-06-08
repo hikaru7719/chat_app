@@ -17,7 +17,7 @@ var users = require('./routes/users');
 var login = require('./routes/login');
 var chat = require('./routes/chat');
 var create = require('./routes/create');
-
+var explain = require('./routes/explain');
 var sessionMiddleware = session({
   secret: 'mallow',
   resave: false,
@@ -45,6 +45,7 @@ app.use(passport.initialize());
 app.use(sessionMiddleware);
 
 app.use('/',index);
+app.use('/explain',explain);
 app.use('/login',login);
 app.use('/chat',chat);
 app.use('/create',create);
