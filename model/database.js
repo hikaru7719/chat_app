@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var mURI='mongodb://127.0.0.1/chat';
+var mURI='mongodb://heroku_6sjz6s6c:7h5qb18pfcv054p90218b31rea@ds049925.mlab.com:49925/heroku_6sjz6s6c';
 mongoose.connect(mURI,function(err){
   if(err){
     console.log(err);
