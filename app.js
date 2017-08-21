@@ -44,12 +44,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(sessionMiddleware);
 
+app.use('/addUser',users);
 app.use('/',index);
-app.use('/explain',explain);
 app.use('/login',login);
+app.use(function(req, res, next){
+  console.log(req.session.username);
+  if(req.session.username){
+    next();
+  }else{
+    res.redirect('login');
+  }
+});
+
 app.use('/chat',chat);
 app.use('/create',create);
-app.use('/addUser',users);
+app.use('/explain',explain);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
