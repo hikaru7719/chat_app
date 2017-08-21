@@ -64,7 +64,7 @@ function SendMessage(){
     <div class="panel panel-primary">
       <div class="panel-heading"><div class="panel-title"><%=value.user%></div></div>
       <div class="panel-body"><p><%=value.message%></p></div>
-      <div class="panel-footer text-right"><%=value.time%></div>
+      <div class="panel-footer text-right"><%=value.time.toISOString()%></div>
     </div>
   <% }); }%></div>
 <br>
@@ -74,10 +74,10 @@ function SendMessage(){
   <div class="row">
     <div class="col-xs-offset-1 col-xs-10 col-xs-offset-1">
       <div class="input-group">
-        <input id="m" type="text" class="form-control" placeholder="chat message">
+        <input id="m" type="text" class="form-control" placeholder="chat message" onkeydown = "if (event.keyCode == 13) document.getElementById('btn').click()">
         <input id="question_id" type="hidden" value="<%= question_id%>">
         <span class="input-group-btn">
-          <button class="btn btn-default" onclick="SendMessage()">Send</button>
+          <button id="btn" class="btn btn-default" onclick="SendMessage()">Send</button>
         </span>
       </div>
     </div>
